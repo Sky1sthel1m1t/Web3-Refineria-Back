@@ -56,10 +56,13 @@ class RutaDetalleSerializer(serializers.ModelSerializer):
         read_only=True,
         default=False
     )
+    ruta = serializers.PrimaryKeyRelatedField(
+        read_only=True,
+    )
 
     class Meta:
         model = RutaDetalle
-        fields = ['surtidor', 'orden', 'litros', 'ruta_id', 'entregado']
+        fields = ['id','surtidor', 'orden', 'litros', 'ruta_id', 'entregado', 'ruta']
 
 
 class RutaWithDetalleSerializer(serializers.ModelSerializer):

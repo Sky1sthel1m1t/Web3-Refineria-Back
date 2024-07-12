@@ -3,7 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from api.models import Ruta, RutaDetalle
-from api.permissions import IsAdministradorRefineria
+from api.permissions import IsAdministradorRefineria, IsChofer
 from api.serializers import RutaSerializer, RutaWithDetalleSerializer, RutaDetalleSerializer
 
 
@@ -43,5 +43,3 @@ class RutaViewSet(viewsets.ModelViewSet):
         ruta_detalle_serializer.is_valid(raise_exception=True)
         ruta_detalle_serializer.save()
         return Response(ruta_detalle_serializer.data, status=status.HTTP_201_CREATED)
-
-
