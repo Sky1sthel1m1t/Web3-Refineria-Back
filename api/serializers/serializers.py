@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from api.models import Camion, Ruta, RutaDetalle
+from api.models.solicitud import Solicitud
 
 
 class CamionSerializer(serializers.ModelSerializer):
@@ -62,7 +63,7 @@ class RutaDetalleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RutaDetalle
-        fields = ['id','surtidor', 'orden', 'litros', 'ruta_id', 'entregado', 'ruta']
+        fields = ['id', 'surtidor', 'orden', 'litros', 'ruta_id', 'entregado', 'ruta']
 
 
 class RutaWithDetalleSerializer(serializers.ModelSerializer):
@@ -79,4 +80,10 @@ class RutaWithDetalleSerializer(serializers.ModelSerializer):
         fields = ['id', 'nombre', 'fecha', 'estado',
                   'litros', 'tipo_gasolina', 'precio_litro',
                   'camion', 'detalle',
-        ]
+                  ]
+
+
+class SolicitudSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Solicitud
+        fields = '__all__'
